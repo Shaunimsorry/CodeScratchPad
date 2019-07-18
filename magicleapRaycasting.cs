@@ -12,12 +12,7 @@ public class readRaycast : MonoBehaviour
     public ControllerConnectionHandler _controlerHandler;
     public GameObject physicalController;
     public GameObject locator;
-    public void Awake()
-    {
-        Vector3 zeroPos = new Vector3(0,0,0);
-        Quaternion rotOrigin = new Quaternion(0,0,0,0);
-        GameObject locator = GameObject.CreatePrimitive(PrimitiveType.Plane);
-    }
+
     public void readCast(MLWorldRays.MLWorldRaycastResultState state, RaycastHit rayhit, float confidence)
     {
         rcState.text = state.ToString();
