@@ -20,7 +20,7 @@ public class readRaycast : MonoBehaviour
         _confidence.text = confidence.ToString();
 
         locator.transform.position = rayhit.point;
-        locator.transform.LookAt(rayhit.point + rayhit.point);
+        locator.transform.LookAt(rayhit.normal + rayhit.point); //need to verify this
     
     }
 }
