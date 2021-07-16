@@ -1,0 +1,27 @@
+import os 
+import csv
+import shutil
+
+src_pdf_folder = os.path.join(os.getcwd(),"PDF")
+dst_pdf_folder = os.path.join(os.getcwd(),"FixedPDFS")
+namelist = os.path.join(os.getcwd(),"names.csv")
+
+rowcount = 0
+
+if os.path.exists(dst_pdf_folder):
+    print ("Path Exists!")
+else:
+    os.makedirs(dst_pdf_folder)
+    print ("Made Folder")
+
+with open (namelist, "r") as data:
+    for row in data:
+        rowcount = rowcount + 1
+        student_name = row.replace("\n","")
+        for root,dirs, files in os.walk(src_pdf_folder):
+            for i in files:
+                src_pdf_path = os.path.join(root,i)
+                src_pdf_key = src_pdf_path.split("\\")[-1].replace(".pdf","")
+                dst_pdf_path = os.path.join(dst_pdf_folder,student_name+".pdf")
+                if rowcount == int(src_pdf_key):
+                    shutil.copy(src_pdf_path,dst_pdf_path)
